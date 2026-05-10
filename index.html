@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Floptok World</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-badge">Floptok</div>
+        <h1>Floptok-World</h1>
+      </div>
+
+
+<!-- 1-->
+      <div class="status-panel">
+        <div class="status-card coins-card">
+          <span class="status-icon">👛</span>
+          <div>
+            <div class="status-label">FlopCoins</div>
+            <div id="flopCoins" class="status-value">120</div>
+          </div>
+        </div>
+        <div class="status-card tool-card">
+          <span class="status-icon">💧</span>
+          <div>
+            <div class="status-label">Tool</div>
+            <div id="activeAction" class="status-value">Water / Plant</div>
+          </div>
+        </div>
+        <button id="exportBtn" class="pill-button" title="Download progress">💾 Export</button>
+        <button id="importBtn" class="pill-button" title="Upload progress">📂 Import</button>
+        <input type="file" id="importFile" accept=".json" style="display: none;" />
+        <input type="file" id="wallpaperUpload" accept="image/*" style="display: none;" />
+        <button id="wallpaperBtn" class="pill-button" title="Set custom background">🖼️ Wallpaper</button>
+      </div>
+    </header>
+
+
+    <main class="main-grid">
+      <section class="farm-panel">
+        <div class="panel-title">Cozy Farm</div>
+        <div class="grid-controls">
+          <label>
+            Grid size
+            <select id="gridSizeSelect">
+              <option value="3">3 × 3</option>
+              <option value="4">4 × 4</option>
+              <option value="5" selected>5 × 5</option>
+            </select>
+          </label>
+          <div class="unlock-info">
+            <span id="unlockedTiles">5</span> / <span id="totalTiles">25</span> tiles unlocked
+          </div>
+          <button id="resetButton" class="pill-button">Reset Farm</button>
+        </div>
+        <div id="farmGrid" class="farm-grid"></div>
+      </section>
+
+
+      <aside class="shop-panel">
+        <div class="panel-title">Seed Shop</div>
+        <div class="shop-copy">
+          Choose your seeds, water the patch, plant them, and collect surreal harvests.
+        </div>
+        
+        <!-- Meme Seeds Section -->
+        <div class="shop-section">
+          <div class="shop-section-title">🎭 Meme Seeds</div>
+          <div id="memeSeedList" class="seed-list"></div>
+        </div>
+
+        <!-- Farm Upgrades Section -->
+        <div class="shop-section">
+          <div class="shop-section-title">🌾 Farm Seeds</div>
+          <div id="farmSeedList" class="seed-list"></div>
+        </div>
+
+        <div class="tips-box">
+          <strong>✨Tip:</strong> Click an empty tile to water it, then click again to plant the selected seed.
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

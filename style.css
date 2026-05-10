@@ -1,0 +1,416 @@
+/* root */
+:root {
+  color-scheme: dark;
+  --bg: #1d1227;
+  --panel: rgba(27, 14, 40, 0.92);
+  --panel-border: #7933ff;
+  --accent: #ff9d5c;
+  --accent-2: #66ffb2;
+  --text: #f7f1ff;
+  --muted: #bda4d6;
+  --tile: #2d1d3d;
+  --tile-border: #6e3ce8;
+  --tile-watered: #1f4f74;
+  --tile-ready: #ffc75f;
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+}
+
+* {
+  box-sizing: border-box;
+}
+/* body */
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, sans-serif;
+  
+  /* Cậu chỉ cần viết thế này thôi nhé */
+  background-image: url('background.png'); 
+  /* Phu kin toan bo man hinh */
+  background-size: cover;
+  /* position */
+  background-position: center;
+  /* ngan ko cho anh lap lai */
+  background-repeat: no-repeat;
+
+  background-attachment: fixed; /* Thêm cái này để cuộn trang ảnh không bị trôi */
+  
+  color: var(--text);
+} /* Nhớ có dấu đóng ngoặc này nha cậu */
+
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'%3E%3Cpath fill='rgba(255,255,255,0.04)' d='M30 0h6v120h-6zM60 0h6v120h-6zM90 0h6v120h-6zM0 30h120v6h-120zM0 60h120v6h-120zM0 90h120v6h-120z'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+.app-shell {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.topbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.brand-badge {
+  padding: 10px 14px;
+  background: #ff5ce0;
+  border-radius: 16px;
+  color: #1a0416;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.82rem;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3.2rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.status-panel {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.status-card {
+  display: flex;
+  align-items: center;
+  gap: 12.5px;
+  min-width: 189px;
+  padding: 15px 17px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(19, 11, 30, 0.95);
+}
+
+.status-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffb94d, #ff5ce0);
+  font-size: 1.4rem;
+}
+
+.status-label {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.status-value {
+  font-size: 1.28rem;
+  font-weight: 700;
+}
+
+.main-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) 360px;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.farm-panel,
+.shop-panel {
+  padding: 24px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.panel-title {
+  margin: 0 0 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.grid-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.grid-controls label {
+  display: grid;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+select,
+.pill-button {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font-size: 0.96rem;
+}
+
+.pill-button {
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.pill-button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.farm-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.farm-tile {
+  position: relative;
+  min-height: 110px;
+  aspect-ratio: 1 / 1;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(180deg, #2d1d3d 0%, #261730 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.farm-tile:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.farm-tile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 40%);
+  pointer-events: none;
+}
+
+.tile-inner {
+  position: absolute;
+  inset: 10px;
+  border-radius: 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+  background: #1f0f2b;
+  display: grid;
+  place-items: center;
+  padding: 14px;
+  text-align: center;
+}
+
+.tile-state {
+  display: grid;
+  gap: 6px;
+}
+
+.tile-label {
+  font-size: 0.98rem;
+  font-weight: 700;
+}
+
+.tile-subtitle {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.tile-world {
+  width: 95%;
+  height: 50%;
+  display: grid;
+  place-items: center;
+}
+
+.tile-watered .tile-inner {
+  background: #112d45;
+}
+
+.tile-planted .tile-inner {
+  background: #13371f;
+}
+
+.tile-ready .tile-inner {
+  background: #3f2a0a;
+}
+
+.tile-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.12), transparent 40%);
+}
+
+.seed-list {
+  display: grid;
+  gap: 14px;
+}
+
+.seed-card {
+  display: grid;
+  grid-template-columns: 64px 1fr auto;
+  gap: 12px;
+  align-items: center;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.seed-icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.08);
+  font-size: 1.5rem;
+}
+
+.seed-meta {
+  display: grid;
+  gap: 4px;
+}
+
+.seed-name {
+  font-weight: 700;
+}
+
+.seed-description {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+
+
+
+.seed-action {
+  display: grid;
+  gap: 8px;
+}
+
+
+
+
+
+.seed-button {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+
+
+
+
+.seed-button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.12);
+}
+
+
+
+
+
+
+
+.seed-button.active {
+  border-color: #7dffab;
+  background: rgba(102, 255, 178, 0.18);
+}
+
+
+
+
+
+
+.tips-box {
+  margin-top: 22px;
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.farm-tile.tile-locked {
+  border-color: rgba(255, 255, 255, 0.04);
+  background: linear-gradient(180deg, #1a1227 0%, #140d1f 100%);
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.farm-tile.tile-locked:hover {
+  transform: none;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.farm-tile.tile-locked .tile-inner {
+  background: #0f0819;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.shop-section {
+  margin-bottom: 24px;
+}
+
+.shop-section-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-2);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+
+.shop-section:last-child {
+  margin-bottom: 0;
+}
+
+.unlock-info {
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+@media (max-width: 960px) {
+  .main-grid {
+    grid-template-columns: 1fr;
+  }
+}
