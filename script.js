@@ -1,3 +1,4 @@
+/* code by github copilot, reference */
 const farmGrid = document.getElementById('farmGrid');
 const flopCoinsEl = document.getElementById('flopCoins');
 const memeSeedListEl = document.getElementById('memeSeedList');
@@ -20,7 +21,7 @@ const seedTypes = [
     emoji: '💎',
     growthTime: 6,
     harvest: 18,
-    description: 'Psychedelic gem shoots with neon wink.',
+    description: 'cVm seed makes you cVM😭💦',
     color: '#ff9d5c',
     category: 'meme',
   },
@@ -44,6 +45,7 @@ const seedTypes = [
     color: '#6c8cff',
     category: 'meme',
   },
+  
   {
     id: 'watermelon',
     name: 'Watermelon',
@@ -54,6 +56,8 @@ const seedTypes = [
     color: '#ff4444',
     category: 'farm',
   },
+
+  
   {
     id: 'melon',
     name: 'Melon',
